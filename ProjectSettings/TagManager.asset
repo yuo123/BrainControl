@@ -4,14 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cerebellum
-  - Stem
-  - Limbic
-  - Thalamus
-  - Hypophysis
-  - Frontal
-  - Parietal
-  - Occipital
+  - BrainPart
+  - BodyPart
   layers:
   - Default
   - TransparentFX
