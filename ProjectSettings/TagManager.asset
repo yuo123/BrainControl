@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BrainPart
   - BodyPart
+  - Signal
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effects
+    uniqueID: 978794457
     locked: 0
   - name: Overlay
     uniqueID: 2826490935

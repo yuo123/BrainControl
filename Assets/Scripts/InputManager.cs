@@ -45,5 +45,7 @@ public class InputManager : MonoBehaviour
                 mark.transform.position = poses[hitInfo.collider.name];
             }
         }
+
+        
     }
 }
