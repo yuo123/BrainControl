@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
         poses.Add("Liver", pos[10]);
         poses.Add("Legs", pos[11]);
         poses.Add("Arms", pos[12]);
+        
     }
 
     // Update is called once per frame
