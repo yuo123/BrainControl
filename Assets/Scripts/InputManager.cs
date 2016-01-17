@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public Dictionary<string, Vector2> poses;
     public GameObject brainMarkGO;
     public GameObject bodyMarkGO;
+    public GameObject selectedBrainPart;
 
     // Use this for initialization
     void Start()
@@ -44,6 +45,8 @@ public class InputManager : MonoBehaviour
             {
                 GameObject mark = hitInfo.collider.tag == "BrainPart" ? brainMarkGO : bodyMarkGO;
                 mark.transform.position = poses[hitInfo.collider.name];
+                if (hitInfo.collider.tag == "BrainPart")
+                    selectedBrainPart = hitInfo.collider.gameObject;
             }
         }
 
