@@ -12,9 +12,11 @@ public class SignalController : MonoBehaviour
     public GameObject bodyMarkGO;
     public GameObject brainMarkGO;
 
+    public Vector3[] path;
+
     public GameObject signalPrefab;
 
-    const float SIGNAL_INTERVAL = 0.5f;
+    const float SIGNAL_INTERVAL = 5f;
 
     // Use this for initialization
     void Start()
@@ -29,7 +31,14 @@ public class SignalController : MonoBehaviour
         {
             GameObject sig = Instantiate(signalPrefab);
             sig.transform.SetParent(signalsCont.transform);
-            sig.transform.position = GetRandomBodyPart().transform.position;
+            GameObject origin = GetRandomBodyPart();
+            sig.transform.position = origin.transform.position;
+            SignalMovement sigScript = sig.GetComponent<SignalMovement>();
+            sigScript.signalController = this;
+            sigScript.sigClass = SignalMovement.SignalClass.Sensory;
+            sigScript.Origin = origin;
+            sigScript.Target = GetRandomBrainPart();
+            sigScript.StartMove();
         }
     }
 

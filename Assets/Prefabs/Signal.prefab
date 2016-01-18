@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 423150}
   - 212: {fileID: 21287928}
+  - 114: {fileID: 11439436}
   m_Layer: 0
   m_Name: Signal
   m_TagString: Untagged
@@ -28,6 +29,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11439436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a4a96e343954b47b7c88c38e7b3575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signalController: {fileID: 0}
 --- !u!212 &21287928
 SpriteRenderer:
   m_ObjectHideFlags: 1
