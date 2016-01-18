@@ -367,20 +367,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 543360577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd4b74dfc4aa654aba62fd60c4bac87, type: 3}
+  m_Script: {fileID: 11500000, guid: aa89aa91990777b4e9a5806e60dc432e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signalPrefab: {fileID: 178158, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
   inputManager: {fileID: 2132349139}
-  brainPartsCont: {fileID: 1665821257}
-  bodyPartsCont: {fileID: 1180200157}
   signalsCont: {fileID: 1573623303}
-  signalPath:
-  - {x: -0.05, y: -1.76, z: 0}
-  - {x: -0.05, y: -0.54, z: 0}
-  - {x: 0.56, y: 0.17, z: 0}
-  - {x: 0.76, y: 1.25, z: 0}
-  - {x: 0.29, y: 2.25, z: 0}
+  signalPrefab: {fileID: 190866, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
 --- !u!4 &543360579
 Transform:
   m_ObjectHideFlags: 0
