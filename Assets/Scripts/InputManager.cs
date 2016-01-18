@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public Dictionary<string, Vector2> poses;
     public GameObject brainMarkGO;
     public GameObject bodyMarkGO;
+    public GameObject selectedBrainPart;
 
     // Use this for initialization
     void Start()
@@ -29,6 +30,7 @@ public class InputManager : MonoBehaviour
         poses.Add("Liver", pos[10]);
         poses.Add("Legs", pos[11]);
         poses.Add("Arms", pos[12]);
+        
     }
 
     // Update is called once per frame
@@ -43,7 +45,11 @@ public class InputManager : MonoBehaviour
             {
                 GameObject mark = hitInfo.collider.tag == "BrainPart" ? brainMarkGO : bodyMarkGO;
                 mark.transform.position = poses[hitInfo.collider.name];
+                if (hitInfo.collider.tag == "BrainPart")
+                    selectedBrainPart = hitInfo.collider.gameObject;
             }
         }
+
+        
     }
 }
