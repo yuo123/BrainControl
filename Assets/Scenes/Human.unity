@@ -372,6 +372,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 2132349139}
   signalsCont: {fileID: 1573623303}
+  bodyPartsCont: {fileID: 1180200157}
+  brainPartsCont: {fileID: 1665821257}
+  bodyMarkGO: {fileID: 1439415844}
+  brainMarkGO: {fileID: 1965494228}
+  path:
+  - {x: -0.05, y: -1.79, z: 0}
+  - {x: -0.05, y: -0.56, z: 0}
+  - {x: 0.57, y: -0.05, z: 0}
+  - {x: 0.76, y: 1.24, z: 0}
+  - {x: 0.32, y: 2.23, z: 0}
   signalPrefab: {fileID: 190866, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
 --- !u!4 &543360579
 Transform:
