@@ -32,7 +32,11 @@ public class SignalController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        path = new Vector3[transform.childCount];
+        for (int i = 0; i < path.Length; i++)
+        {
+            path[i] = transform.GetChild(i).transform.position;
+        }
     }
 
     // Update is called once per frame
