@@ -173,7 +173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1180200158}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1 &280182368
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +331,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1180200158}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &467013138
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +679,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1665821258}
   m_RootOrder: 0
+--- !u!1 &1028111193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1028111194}
+  - 61: {fileID: 1028111195}
+  m_Layer: 0
+  m_Name: Ears
+  m_TagString: BodyPart
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1028111194
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1028111193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.64, y: -3.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1180200158}
+  m_RootOrder: 7
+--- !u!61 &1028111195
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1028111193}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.19, y: 0.56916666}
 --- !u!1 &1180200157
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,8 +750,10 @@ Transform:
   - {fileID: 280182369}
   - {fileID: 467013139}
   - {fileID: 592452805}
+  - {fileID: 1732962921}
   - {fileID: 1308876889}
   - {fileID: 385475209}
+  - {fileID: 1028111194}
   - {fileID: 50720561}
   - {fileID: 1554391825}
   m_Father: {fileID: 0}
@@ -797,7 +841,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1180200158}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1439415844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1180200158}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!1 &1573623303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1232,48 @@ Transform:
   - {fileID: 37334951}
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!1 &1732962920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1732962921}
+  - 61: {fileID: 1732962922}
+  m_Layer: 0
+  m_Name: Tounge
+  m_TagString: BodyPart
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1732962921
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1732962920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.39, y: -3.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1180200158}
+  m_RootOrder: 4
+--- !u!61 &1732962922
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1732962920}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.86, y: 0.56916666}
 --- !u!1 &1832890535
 GameObject:
   m_ObjectHideFlags: 0
