@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+
+public enum SignalType { LegPain, HandPain, ScaryObjectSight, FamiliarObjectSight, HotObject, ColdObject, SweetTaste, SourTaste, SpokenTo, Falling, Running, HotBody, ColdBody, HighBloodPressure, LowBloodPressure, LowWater, HighWater, BlockedBreathing }
 
 public class SignalMovement : MonoBehaviour
 {
@@ -9,9 +13,26 @@ public class SignalMovement : MonoBehaviour
 
     public SignalController signalController;
 
-    public SignalClass sigClass;
+    private Text titleText;
+
+    public SignalClass SigClass { get; set; }
+    public SignalType SigType { get; set; }
     public GameObject Target { get; set; }
     public GameObject Origin { get; set; }
+    private string myname;
+
+    public string Name
+    {
+        get { return myname; }
+        set
+        {
+            if (titleText == null)
+                titleText = transform.Find("Canvas/Title").GetComponent<Text>();
+            titleText.text = new string(value.Reverse().ToArray());
+            myname = value;
+        }
+    }
+
 
     public float speed = 1f;
 
@@ -36,12 +57,11 @@ public class SignalMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     public void StartMove()
     {
-        switch (sigClass)
+        switch (SigClass)
         {
             case SignalClass.Sensory:
                 direction = 1;
@@ -70,6 +90,22 @@ public class SignalMovement : MonoBehaviour
                     //Finish path
                 }
             }
+        }
+    }
+
+    public void FillSignalInfo(SignalClass clas, string origin, string target, string name)
+    {
+        this.SigClass = clas;
+        this.Name = name;
+        if (clas == SignalClass.Sensory)
+        {
+            this.Origin = signalController.GetBodyPart(origin);
+            this.Target = signalController.GetBrainPart(target);
+        }
+        else
+        {
+            this.Origin = signalController.GetBrainPart(origin);
+            this.Target = signalController.GetBodyPart(target);
         }
     }
 }
