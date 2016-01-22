@@ -3,13 +3,16 @@
 using UnityEngine;
 using System.Collections;
 
+public enum SignalType { LegPain, HandPain, ScaryObjectSight, FamiliarObjectSight, HotObject, ColdObject, SweetTaste, SourTaste, SpokenTo, Insulted, Greeted, Falling, Running, HotBody, ColdBody, HighBloodPressure, LowBloodPressure, LowWater, HighWater, BlockedBreathing }
+
 public class SignalMovement : MonoBehaviour
 {
     public enum SignalClass { Sensory, Motor }
 
     public SignalController signalController;
 
-    public SignalClass sigClass;
+    public SignalClass SigClass { get; set; }
+    public SignalType SigType { get; set; }
     public GameObject Target { get; set; }
     public GameObject Origin { get; set; }
 
@@ -41,7 +44,7 @@ public class SignalMovement : MonoBehaviour
 
     public void StartMove()
     {
-        switch (sigClass)
+        switch (SigClass)
         {
             case SignalClass.Sensory:
                 direction = 1;
@@ -70,6 +73,21 @@ public class SignalMovement : MonoBehaviour
                     //Finish path
                 }
             }
+        }
+    }
+    
+    public void FillSignalInfo(SignalClass clas, string origin, string target)
+    {
+        this.SigClass = clas;
+        if (clas == SignalClass.Sensory)
+        {
+            this.Origin = signalController.GetBodyPart(origin);
+            this.Target = signalController.GetBrainPart(target);
+        }
+        else
+        {
+            this.Origin = signalController.GetBrainPart(origin);
+            this.Target = signalController.GetBodyPart(target);
         }
     }
 }
