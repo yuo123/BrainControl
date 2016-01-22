@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 189b1ece2ffecb04aa6012a6c909665b
-timeCreated: 1453132065
+guid: 0b4d3d947561eab48828cdd2235e85f5
+timeCreated: 1453475295
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SignalSheet_0
+    21300002: SignalSheet_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -17,44 +19,59 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: 16
-    mipBias: 0
+    mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 650
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
-    outline:
-    - - {x: 0, y: 0}
-      - {x: 0, y: 4}
-      - {x: 4, y: 4}
-      - {x: 4, y: 0}
+    sprites:
+    - name: SignalSheet_0
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 188
+        width: 585
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SignalSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 188
+        width: 586
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
