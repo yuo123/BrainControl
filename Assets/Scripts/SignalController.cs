@@ -12,7 +12,7 @@ public class SignalController : MonoBehaviour
     public GameObject bodyMarkGO;
     public GameObject brainMarkGO;
 
-    public GameObject[] path;
+    public Vector3[] path;
 
     public GameObject signalPrefab;
 

@@ -17,17 +17,17 @@ public class SignalMovement : MonoBehaviour
 
     private int direction;
     private int currentWaypoint = -2;
-    private GameObject GetCurrentWaypoint()
+    private Vector3 GetCurrentWaypoint()
     {
 
         if (currentWaypoint < -1 || currentWaypoint > signalController.path.Length)
             throw new ArgumentOutOfRangeException();
 
         if (currentWaypoint < 0)
-            return signalController.inputManager.bodyMarkGO; 
+            return signalController.inputManager.bodyMarkGO.transform.position;
 
         if (currentWaypoint >= signalController.path.Length)
-            return signalController.inputManager.selectedBrainPart; 
+            return signalController.inputManager.selectedBrainPart.transform.position;
 
         return signalController.path[currentWaypoint];
     }
@@ -59,9 +59,9 @@ public class SignalMovement : MonoBehaviour
     {
         if (currentWaypoint != -2)
         {
-            GameObject cur = GetCurrentWaypoint();
-            this.transform.position = Vector3.MoveTowards(this.transform.position, cur.transform.position, speed * Time.deltaTime);
-            if (transform.position == cur.transform.position)
+            Vector3 cur = GetCurrentWaypoint();
+            this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
+            if (transform.position == cur)
             {
                 currentWaypoint += direction;
                 if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
