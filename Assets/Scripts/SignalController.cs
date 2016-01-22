@@ -95,10 +95,10 @@ public class SignalController : MonoBehaviour
                 sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Frontal", "שיחה");
                 break;
             case SignalType.Falling:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Crebellum", "נפילה");
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Cerebellum", "נפילה");
                 break;
             case SignalType.Running:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Crebellum", "ריצה");
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Cerebellum", "ריצה");
                 break;
             case SignalType.HotBody:
                 sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "חום גוף גבוה");
@@ -146,6 +146,14 @@ public class SignalController : MonoBehaviour
 
     public GameObject GetBrainPart(string name)
     {
-        return brainPartsCont.transform.FindChild(name).gameObject;
+        try
+        {
+            return brainPartsCont.transform.FindChild(name).gameObject;
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("NullReferenceException: name is " + name);
+            return null;
+        }
     }
 }
