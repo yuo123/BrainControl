@@ -14,7 +14,9 @@ public class SignalMovement : MonoBehaviour
     public SignalController signalController;
 
     private Text titleText;
+    private Image backImage;
 
+    public GameObject infoButton;
     public SignalClass SigClass { get; set; }
     public SignalType SigType { get; set; }
     public GameObject Target { get; set; }
@@ -29,7 +31,11 @@ public class SignalMovement : MonoBehaviour
         {
             if (titleText == null)
                 titleText = transform.Find("Canvas/Title").GetComponent<Text>();
+            if (backImage == null)
+                backImage = transform.Find("Canvas/Background").GetComponent<Image>();
             titleText.text = new string(value.Reverse().ToArray());
+            backImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, titleText.preferredWidth + 60f); // 60f is for the padding
+            ((RectTransform)infoButton.transform).Translate(backImage.rectTransform.right.x + 60f, 0, 0);
             myname = value;
         }
     }
