@@ -307,7 +307,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
 --- !u!212 &21287928
 SpriteRenderer:
   m_ObjectHideFlags: 1

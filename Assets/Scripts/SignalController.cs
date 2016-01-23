@@ -22,7 +22,7 @@ public class SignalController : MonoBehaviour
     public GameObject signalPrefab;
 
     public Text healthText;
-
+    public Canvas lostCanvas;
 
     #endregion
 
@@ -51,13 +51,14 @@ public class SignalController : MonoBehaviour
     private void ShowLostPopup()
     {
         Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Menu");
+        lostCanvas.GetComponent<Image>().raycastTarget = false;
     }
 
     // Use this for initialization
     void Start()
     {
         path = new Vector3[transform.childCount];
-        
+
         for (int i = 0; i < path.Length; i++)
         {
             path[i] = transform.GetChild(i).transform.position;

@@ -27,7 +27,7 @@ public class SignalMovement : MonoBehaviour
     /// </summary>
     public int Importance { get; set; }
     private string myname;
-    private Vector3 brainPart;
+    private Vector3? destPart = null;
 
     public string Name
     {
@@ -58,13 +58,15 @@ public class SignalMovement : MonoBehaviour
         if (currentWaypoint < -1 || currentWaypoint > signalController.path.Length)
             throw new ArgumentOutOfRangeException();
 
-        if (currentWaypoint < 0)
-            return signalController.inputManager.selectedBodyPart.transform.position;
+        if (currentWaypoint < 0 || currentWaypoint >= signalController.path.Length)
+        {
+            if (destPart == null)
+                destPart = direction == 1 ? signalController.inputManager.selectedBrainPart.transform.position : signalController.inputManager.selectedBodyPart.transform.position;
+            return destPart.Value;
+        }
 
-        if (currentWaypoint >= signalController.path.Length)
-            return signalController.inputManager.selectedBrainPart.transform.position;
         return signalController.path[currentWaypoint];
-        
+
     }
 
 
@@ -93,16 +95,10 @@ public class SignalMovement : MonoBehaviour
     {
         if (currentWaypoint != -2)
         {
-            if (currentWaypoint <= 2)
-            {
             Vector3 cur = GetCurrentWaypoint();
             this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
             if (transform.position == cur)
             {
-                    if (currentWaypoint == 2)
-                    {
-                        brainPart = signalController.inputManager.selectedBrainPart.transform.position;
-                    }
                 currentWaypoint += direction;
                 if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
                 {
@@ -110,17 +106,7 @@ public class SignalMovement : MonoBehaviour
                     signalController.SignalReached(this);
                     Destroy(this.gameObject);
                 }
-                }
             }
-            else
-            {
-                this.transform.position = Vector3.MoveTowards(this.transform.position,brainPart, speed * Time.deltaTime);
-            }
-           
-            
-               
-
-        
         }
     }
 
