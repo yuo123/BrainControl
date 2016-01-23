@@ -23,6 +23,7 @@ public class SignalController : MonoBehaviour
 
     public Text healthText;
 
+
     #endregion
 
     private int health = 100;
@@ -40,7 +41,16 @@ public class SignalController : MonoBehaviour
         {
             health = value;
             healthText.text = health.ToString();
+            if (health <= 0)
+            {
+                ShowLostPopup();
+            }
         }
+    }
+
+    private void ShowLostPopup()
+    {
+        Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Menu");
     }
 
     // Use this for initialization
