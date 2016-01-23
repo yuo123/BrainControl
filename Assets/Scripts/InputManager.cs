@@ -41,6 +41,8 @@ public class InputManager : MonoBehaviour
                         return;
                 }
                 mark.transform.position = hitInfo.collider.transform.position;
+                mark.transform.localScale = hitInfo.collider.transform.localScale;
+                mark.transform.rotation = hitInfo.collider.transform.rotation;
             }
         }
     }
