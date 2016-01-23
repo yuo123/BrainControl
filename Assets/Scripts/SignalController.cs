@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 using URandom = UnityEngine.Random;
 
 public class SignalController : MonoBehaviour
@@ -54,12 +55,12 @@ public class SignalController : MonoBehaviour
 
     private GameObject GetRandomBodyPart()
     {
-        return bodyPartsCont.transform.GetChild(UnityEngine.Random.Range(0, bodyPartsCont.transform.childCount - 1)).gameObject;
+        return bodyPartsCont.transform.GetChild(URandom.Range(0, bodyPartsCont.transform.childCount - 1)).gameObject;
     }
 
     private GameObject GetRandomBrainPart()
     {
-        return brainPartsCont.transform.GetChild(UnityEngine.Random.Range(0, brainPartsCont.transform.childCount - 1)).gameObject;
+        return brainPartsCont.transform.GetChild(URandom.Range(0, brainPartsCont.transform.childCount - 1)).gameObject;
     }
 
     public virtual GameObject InstantiateSignal(SignalType type)
@@ -68,6 +69,9 @@ public class SignalController : MonoBehaviour
         SignalMovement sigObj = signal.GetComponent<SignalMovement>();
         signal.transform.SetParent(signalsCont.transform);
         sigObj.signalController = this;
+        sigObj.SigType = type;
+        Button infoButton = signal.transform.Find("Canvas/InfoButton").GetComponent<Button>();
+        infoButton.onClick.AddListener(() => inputManager.SignalClick(signal));
 
         switch (type)
         {
