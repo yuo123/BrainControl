@@ -47,6 +47,21 @@ public class InputManager : MonoBehaviour
 
     public void SignalClick(GameObject signal)
     {
-        signalInfoText.text = new string(signal.GetComponent<SignalMovement>().Info.Reverse().ToArray());
+        signalInfoText.horizontalOverflow = HorizontalWrapMode.Wrap;//set the text to wrap, so unity calculates the wrap for us
+        signalInfoText.text = signal.GetComponent<SignalMovement>().Info;//set the raw text, which will display inccorrectly
+        Canvas.ForceUpdateCanvases();//make the canvas calculate word wrap
+        string nText = "";
+        int prev = -1;
+        foreach (UILineInfo line in signalInfoText.cachedTextGenerator.lines)
+        {
+            if (prev != -1)
+            {
+                nText += new string(signalInfoText.text.Substring(prev, line.startCharIdx - prev).Reverse().ToArray()) + "\n";//reverse each line, and add a line-end character
+            }
+            prev = line.startCharIdx;
+        }
+        nText += new string(signalInfoText.text.Substring(prev).Reverse().ToArray()) + "\n";//do the last line
+        signalInfoText.text = nText;
+        signalInfoText.horizontalOverflow = HorizontalWrapMode.Overflow;//turn off automatic word wrap, so it doesn't mess with ours
     }
 }
