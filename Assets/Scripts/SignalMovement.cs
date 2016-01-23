@@ -22,6 +22,10 @@ public class SignalMovement : MonoBehaviour
     public GameObject Target { get; set; }
     public GameObject Origin { get; set; }
     public string Info { get; set; }
+    /// <summary>
+    /// The amount of health this signal will substract if ignored
+    /// </summary>
+    public int Importance { get; set; }
     private string myname;
     private Vector3 brainPart;
 
@@ -91,20 +95,21 @@ public class SignalMovement : MonoBehaviour
         {
             if (currentWaypoint <= 2)
             {
-                Vector3 cur = GetCurrentWaypoint();
-                this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
-                if (transform.position == cur)
-                {
+            Vector3 cur = GetCurrentWaypoint();
+            this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
+            if (transform.position == cur)
+            {
                     if (currentWaypoint == 2)
                     {
                         brainPart = signalController.inputManager.selectedBrainPart.transform.position;
                     }
-                    currentWaypoint += direction;
-                    if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
-                    {
-                        currentWaypoint = -2;
-                        //Finish path
-                    }
+                currentWaypoint += direction;
+                if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
+                {
+                    currentWaypoint = -2;
+                    signalController.SignalReached(this);
+                    Destroy(this.gameObject);
+                }
                 }
             }
             else
@@ -119,11 +124,12 @@ public class SignalMovement : MonoBehaviour
         }
     }
 
-    public void FillSignalInfo(SignalClass clas, string origin, string target, string name, string info = "אין מידע")
+    public void FillSignalInfo(SignalClass clas, string origin, string target, string name, int importance, string info = "אין מידע")
     {
         this.SigClass = clas;
         this.Name = name;
         this.Info = info;
+        this.Importance = importance;
         if (clas == SignalClass.Sensory)
         {
             this.Origin = signalController.GetBodyPart(origin);
