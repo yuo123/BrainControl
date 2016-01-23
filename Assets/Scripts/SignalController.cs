@@ -21,11 +21,27 @@ public class SignalController : MonoBehaviour
 
     public GameObject signalPrefab;
 
+    public Text healthText;
+
     #endregion
 
-    public int health = 100;
+    private int health = 100;
 
     const float SIGNAL_INTERVAL = 5f;
+
+    public int Health
+    {
+        get
+        {
+            return health;
+        }
+
+        set
+        {
+            health = value;
+            healthText.text = health.ToString();
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -158,8 +174,19 @@ public class SignalController : MonoBehaviour
         GameObject partReached = signal.SigClass == SignalMovement.SignalClass.Sensory ? inputManager.selectedBrainPart : inputManager.selectedBodyPart;
         if (partReached != signal.Target)
         {
-            health -= signal.Importance;
+            Health -= signal.Importance;
+            StartCoroutine(BlinkHealth());
         }
+    }
+
+    public IEnumerator BlinkHealth()
+    {
+        for (int blinks = 5; blinks > 0; blinks--)
+        {
+            healthText.enabled = !healthText.enabled;
+            yield return new WaitForSeconds(0.5f);
+        }
+        healthText.enabled = true;
     }
 
     public GameObject GetBodyPart(string name)
