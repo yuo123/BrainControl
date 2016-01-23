@@ -23,6 +23,8 @@ public class SignalController : MonoBehaviour
 
     #endregion
 
+    public int health = 100;
+
     const float SIGNAL_INTERVAL = 5f;
 
     // Use this for initialization
@@ -71,75 +73,75 @@ public class SignalController : MonoBehaviour
         switch (type)
         {
             case SignalType.LegPain:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Parietal", "כאב ברגל",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Parietal", "כאב ברגל", 5,
                     @"תחושה וכאב מעובדים באונה הקודקודית");
                 break;
             case SignalType.HandPain:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Arms", "Parietal", "כאב ביד",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Arms", "Parietal", "כאב ביד", 5,
                     @"תחושה וכאב מעובדים באונה הקודקודית");
                 break;
             case SignalType.ScaryObjectSight:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Eyes", "Occipital", "עצם מפחיד",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Eyes", "Occipital", "עצם מפחיד", 20,
                     @"נתונים חזותיים מהעיניים מעובדים באונה העורפית");
                 break;
             case SignalType.FamiliarObjectSight:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Eyes", "Occipital", "עצם מוכר",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Eyes", "Occipital", "עצם מוכר", 20,
                     @"נתונים חזותיים מהעיניים מעובדים באונה העורפית");
                 break;
             case SignalType.HotObject:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Arms", "Parietal", "מגע חם מאוד",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Arms", "Parietal", "מגע חם מאוד", 30,
                     @"על תגובה לטמפרטורות קיצוניות אחראית האונה הקודקודית");
                 break;
             case SignalType.ColdObject:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Arms", "Parietal", "מגע קר מאוד",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Arms", "Parietal", "מגע קר מאוד", 25,
                     @"על תגובה לטמפרטורות קיצוניות אחראית האונה הקודקודית");
                 break;
             case SignalType.SweetTaste:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Tounge", "Parietal", "טעם מתוק",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Tounge", "Parietal", "טעם מתוק", 5,
                     @"טעם מעובד באונה הקודקודית");
                 break;
             case SignalType.SourTaste:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Tounge", "Parietal", "טעם חמוץ",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Tounge", "Parietal", "טעם חמוץ", 5,
                     @"טעם מעובד באונה הקודקודית");
                 break;
             case SignalType.SpokenTo:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Frontal", "שיחה",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Frontal", "שיחה", 10,
                     @"עיבוד ותגובה לדיבור מעובדים באונה המצחית");
                 break;
             case SignalType.Falling:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Cerebellum", "נפילה",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Ears", "Cerebellum", "נפילה", 30,
                     @"שיווי משקל ושליטה מוטורית על השרירים הם תפקידיו של המוח הקטן");
                 break;
             case SignalType.Running:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Cerebellum", "ריצה",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Cerebellum", "ריצה", 20,
                     @"שיווי משקל ושליטה מוטורית על השרירים הם תפקידיו של המוח הקטן");
                 break;
             case SignalType.HotBody:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "חום גוף גבוה",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "חום גוף גבוה", 20,
                     @"בקרה על טמפרטורת הגוף היא אחריותו של ההיפותלמוס");
                 break;
             case SignalType.ColdBody:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "חום גוף נמוך",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "חום גוף נמוך", 20,
                     @"בקרה על טמפרטורת הגוף היא אחריותו של ההיפותלמוס");
                 break;
             case SignalType.HighBloodPressure:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Stem", "לחץ דם גבוה",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Stem", "לחץ דם גבוה", 20,
                     @"שמירה על לחץ דם יציב נעשית ע""י גזע המוח");
                 break;
             case SignalType.LowBloodPressure:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Stem", "לחץ דם נמוך",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Stem", "לחץ דם נמוך", 20,
                     @"שמירה על לחץ דם יציב נעשית ע""י גזע המוח");
                 break;
             case SignalType.LowWater:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "ריכוז מים נמוך",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "ריכוז מים נמוך", 25,
                     @"שמירה על ריכוז נוזלים תקין בדם נעשית ע""י ההיפותלמוס");
                 break;
             case SignalType.HighWater:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "ריכוז מים גבוה",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Blood", "Thalamus", "ריכוז מים גבוה", 25,
                     @"שמירה על ריכוז נוזלים תקין בדם נעשית ע""י ההיפותלמוס");
                 break;
             case SignalType.BlockedBreathing:
-                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Trachea", "Stem", "חנק",
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Trachea", "Stem", "חנק", 40,
                     @"אינסטינקטים כגון השתעלות, שנועדה בין השאר להוציא עצמים זרים מקנה הנשימה, נשלטים ע""י גזע המוח");
                 break;
             default:
@@ -151,6 +153,14 @@ public class SignalController : MonoBehaviour
         return signal;
     }
 
+    internal void SignalReached(SignalMovement signal)
+    {
+        GameObject partReached = signal.SigClass == SignalMovement.SignalClass.Sensory ? inputManager.selectedBrainPart : inputManager.selectedBodyPart;
+        if (partReached != signal.Target)
+        {
+            health -= signal.Importance;
+        }
+    }
 
     public GameObject GetBodyPart(string name)
     {

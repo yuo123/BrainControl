@@ -22,6 +22,10 @@ public class SignalMovement : MonoBehaviour
     public GameObject Target { get; set; }
     public GameObject Origin { get; set; }
     public string Info { get; set; }
+    /// <summary>
+    /// The amount of health this signal will substract if ignored
+    /// </summary>
+    public int Importance { get; set; }
     private string myname;
 
     public string Name
@@ -96,17 +100,19 @@ public class SignalMovement : MonoBehaviour
                 if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
                 {
                     currentWaypoint = -2;
-                    //Finish path
+                    signalController.SignalReached(this);
+                    Destroy(this.gameObject);
                 }
             }
         }
     }
 
-    public void FillSignalInfo(SignalClass clas, string origin, string target, string name, string info = "אין מידע")
+    public void FillSignalInfo(SignalClass clas, string origin, string target, string name, int importance, string info = "אין מידע")
     {
         this.SigClass = clas;
         this.Name = name;
         this.Info = info;
+        this.Importance = importance;
         if (clas == SignalClass.Sensory)
         {
             this.Origin = signalController.GetBodyPart(origin);
