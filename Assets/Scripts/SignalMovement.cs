@@ -19,6 +19,7 @@ public class SignalMovement : MonoBehaviour
     public SignalType SigType { get; set; }
     public GameObject Target { get; set; }
     public GameObject Origin { get; set; }
+    public string Info { get; set; }
     private string myname;
 
     public string Name
@@ -93,10 +94,11 @@ public class SignalMovement : MonoBehaviour
         }
     }
 
-    public void FillSignalInfo(SignalClass clas, string origin, string target, string name)
+    public void FillSignalInfo(SignalClass clas, string origin, string target, string name, string info = "אין מידע")
     {
         this.SigClass = clas;
         this.Name = name;
+        this.Info = info;
         if (clas == SignalClass.Sensory)
         {
             this.Origin = signalController.GetBodyPart(origin);
