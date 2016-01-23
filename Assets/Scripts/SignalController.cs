@@ -29,6 +29,7 @@ public class SignalController : MonoBehaviour
     void Start()
     {
         path = new Vector3[transform.childCount];
+        
         for (int i = 0; i < path.Length; i++)
         {
             path[i] = transform.GetChild(i).transform.position;

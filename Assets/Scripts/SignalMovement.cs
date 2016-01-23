@@ -15,7 +15,7 @@ public class SignalMovement : MonoBehaviour
 
     private Text titleText;
     private Image backImage;
-
+    private bool lastWaypoint = false;
     public GameObject infoButton;
     public SignalClass SigClass { get; set; }
     public SignalType SigType { get; set; }
@@ -23,6 +23,7 @@ public class SignalMovement : MonoBehaviour
     public GameObject Origin { get; set; }
     public string Info { get; set; }
     private string myname;
+    private Vector3 brainPart;
 
     public string Name
     {
@@ -58,8 +59,8 @@ public class SignalMovement : MonoBehaviour
 
         if (currentWaypoint >= signalController.path.Length)
             return signalController.inputManager.selectedBrainPart.transform.position;
-
         return signalController.path[currentWaypoint];
+        
     }
 
 
@@ -88,17 +89,33 @@ public class SignalMovement : MonoBehaviour
     {
         if (currentWaypoint != -2)
         {
-            Vector3 cur = GetCurrentWaypoint();
-            this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
-            if (transform.position == cur)
+            if (currentWaypoint <= 2)
             {
-                currentWaypoint += direction;
-                if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
+                Vector3 cur = GetCurrentWaypoint();
+                this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
+                if (transform.position == cur)
                 {
-                    currentWaypoint = -2;
-                    //Finish path
+                    if (currentWaypoint == 2)
+                    {
+                        brainPart = signalController.inputManager.selectedBrainPart.transform.position;
+                    }
+                    currentWaypoint += direction;
+                    if (currentWaypoint == -2 || currentWaypoint == signalController.path.Length + 1)
+                    {
+                        currentWaypoint = -2;
+                        //Finish path
+                    }
                 }
             }
+            else
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position,brainPart, speed * Time.deltaTime);
+            }
+           
+            
+               
+
+        
         }
     }
 
