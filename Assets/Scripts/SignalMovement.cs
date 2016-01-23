@@ -45,7 +45,7 @@ public class SignalMovement : MonoBehaviour
             throw new ArgumentOutOfRangeException();
 
         if (currentWaypoint < 0)
-            return signalController.inputManager.bodyMarkGO.transform.position;
+            return signalController.inputManager.selectedBodyPart.transform.position;
 
         if (currentWaypoint >= signalController.path.Length)
             return signalController.inputManager.selectedBrainPart.transform.position;
