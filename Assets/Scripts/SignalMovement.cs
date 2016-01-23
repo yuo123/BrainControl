@@ -34,8 +34,10 @@ public class SignalMovement : MonoBehaviour
             if (backImage == null)
                 backImage = transform.Find("Canvas/Background").GetComponent<Image>();
             titleText.text = new string(value.Reverse().ToArray());
-            backImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, titleText.preferredWidth + 60f); // 60f is for the padding
-            ((RectTransform)infoButton.transform).Translate(backImage.rectTransform.right.x + 60f, 0, 0);
+            var buttonWidth = ((RectTransform)infoButton.transform).rect.width;
+            backImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, titleText.preferredWidth + buttonWidth + 120f); // 120f is for the padding
+            backImage.transform.Translate(Vector3.Scale(new Vector3(buttonWidth, 0, 0), transform.Find("Canvas").transform.localScale));
+            infoButton.transform.localPosition = Vector3.Scale(new Vector3(backImage.rectTransform.rect.xMax, infoButton.transform.localPosition.y, 0), backImage.transform.localScale);
             myname = value;
         }
     }
