@@ -15,6 +15,7 @@ public class SignalMovement : MonoBehaviour
 
     private Text titleText;
     private Image backImage;
+    private LineRenderer line;
     public GameObject infoButton;
     public SignalClass SigClass { get; set; }
     public SignalType SigType { get; set; }
@@ -81,6 +82,8 @@ public class SignalMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        line = transform.Find("Canvas/Line").GetComponent<LineRenderer>();
+        line.enabled = false;
     }
 
     /// <summary>
@@ -108,6 +111,7 @@ public class SignalMovement : MonoBehaviour
         {
             Vector3 cur = GetCurrentWaypoint();//find the waypoint we should move towards
             this.transform.position = Vector3.MoveTowards(this.transform.position, cur, speed * Time.deltaTime);
+            UpdateLine();
             if (transform.position == cur)//if we've reached the current destination waypoint
             {
                 currentWaypoint += direction;//advance the waypoint index. direction is 1 or -1
@@ -118,6 +122,23 @@ public class SignalMovement : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Updates the graphical line from this signal to the info panel
+    /// </summary>
+    public void UpdateLine()
+    {
+        if (signalController.CurrentInfoSignal == this)
+        {
+            line.SetPosition(0, transform.position);
+            line.SetPosition(1, signalController.LineEndPoint);
+            line.enabled = true;
+        }
+        else
+        {
+            line.enabled = false;
         }
     }
 

@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public GameObject selectedBrainPart;
     public GameObject selectedBodyPart;
     public Text signalInfoText;
+    public SignalController signalController;
 
     // Use this for initialization
     void Start()
@@ -65,5 +66,6 @@ public class InputManager : MonoBehaviour
         nText += new string(signalInfoText.text.Substring(prev).Reverse().ToArray()) + "\n";//do the last line
         signalInfoText.text = nText;
         signalInfoText.horizontalOverflow = HorizontalWrapMode.Overflow;//turn off automatic word wrap, so it doesn't mess with ours
+        signalController.CurrentInfoSignal = signal.GetComponent<SignalMovement>();//finally, tell signalController what signal is currently displaying info
     }
 }

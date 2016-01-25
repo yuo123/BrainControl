@@ -700,7 +700,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1468476361
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &450544383
@@ -928,6 +928,7 @@ MonoBehaviour:
   signalPrefab: {fileID: 190866, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
   healthText: {fileID: 191038128}
   lostCanvas: {fileID: 127505752}
+  signalInfoPanel: {fileID: 386726225}
   signalInterval: 5
   signalSpeed: 1
 --- !u!4 &543360579
@@ -2027,6 +2028,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!1001 &1583394353
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 423150, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1602643945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,6 +2565,7 @@ MonoBehaviour:
   selectedBrainPart: {fileID: 0}
   selectedBodyPart: {fileID: 0}
   signalInfoText: {fileID: 457413604}
+  signalController: {fileID: 543360578}
 --- !u!4 &2132349140
 Transform:
   m_ObjectHideFlags: 0
