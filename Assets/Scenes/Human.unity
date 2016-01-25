@@ -594,7 +594,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 318.89, y: -0.000000034692}
+  m_AnchoredPosition: {x: 318.89, y: 0}
   m_SizeDelta: {x: 140.23, y: 155.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386726227
@@ -928,6 +928,7 @@ MonoBehaviour:
   signalPrefab: {fileID: 190866, guid: d59c2e753480d8f4ca56184ca8f96a99, type: 2}
   healthText: {fileID: 191038128}
   lostCanvas: {fileID: 127505752}
+  signalInterval: 5
 --- !u!4 &543360579
 Transform:
   m_ObjectHideFlags: 0

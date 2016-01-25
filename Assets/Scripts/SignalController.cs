@@ -28,7 +28,9 @@ public class SignalController : MonoBehaviour
 
     private int health = 100;
 
-    const float SIGNAL_INTERVAL = 5f;
+    public float signalInterval = 5f;
+    //the time left for the next signal
+    private float intervalTime;
 
     public int Health
     {
@@ -50,8 +52,8 @@ public class SignalController : MonoBehaviour
 
     private void ShowLostPopup()
     {
-        Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Menu");
-        lostCanvas.GetComponent<Image>().raycastTarget = false;
+        Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Menu"); //show the "Menu" layer. the unusual symbols are bitwise operators, because cullingMask is a flags field.
+        lostCanvas.GetComponent<Image>().raycastTarget = false; //supposed to block clicks behind the menu, but not realy working right now. also not realy important...
     }
 
     // Use this for initialization
@@ -59,22 +61,26 @@ public class SignalController : MonoBehaviour
     {
         path = new Vector3[transform.childCount];
 
-        for (int i = 0; i < path.Length; i++)
+        for (int i = 0; i < path.Length; i++)//put the positions of the "waypoint" GameObjects into an array
         {
             path[i] = transform.GetChild(i).transform.position;
         }
+
+        intervalTime = signalInterval;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.realtimeSinceStartup % SIGNAL_INTERVAL < Time.deltaTime)
+        intervalTime -= Time.deltaTime;//see comment above intervalTime
+        if (intervalTime <= 0)
         {
             Array arr = Enum.GetValues(typeof(SignalType));
-            SignalType type = (SignalType)arr.GetValue(URandom.Range(0, arr.Length));
-            GameObject sig = InstantiateSignal(type);
+            SignalType type = (SignalType)arr.GetValue(URandom.Range(0, arr.Length));//select a random SignalType
+            GameObject sig = InstantiateSignal(type);//see more info in method
             SignalMovement sigScript = sig.GetComponent<SignalMovement>();
             sigScript.StartMove();
+            intervalTime = signalInterval;
         }
     }
 
@@ -88,17 +94,21 @@ public class SignalController : MonoBehaviour
         return brainPartsCont.transform.GetChild(URandom.Range(0, brainPartsCont.transform.childCount - 1)).gameObject;
     }
 
+    /// <summary>
+    /// Creates a full signal GameObject for a given SignalType
+    /// </summary>
+    /// <param name="type">The type of the signal</param>
     public virtual GameObject InstantiateSignal(SignalType type)
     {
         GameObject signal = Instantiate(signalPrefab);
         SignalMovement sigObj = signal.GetComponent<SignalMovement>();
-        signal.transform.SetParent(signalsCont.transform);
+        signal.transform.SetParent(signalsCont.transform);//put the signals in a container, for a cleaner hierarchy
         sigObj.signalController = this;
         sigObj.SigType = type;
         Button infoButton = signal.transform.Find("Canvas/InfoButton").GetComponent<Button>();
-        infoButton.onClick.AddListener(() => inputManager.SignalClick(signal));
+        infoButton.onClick.AddListener(() => inputManager.SignalClick(signal));//set the click event
 
-        switch (type)
+        switch (type) //fill the appropppriate values for each SignalType
         {
             case SignalType.LegPain:
                 sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Legs", "Parietal", "כאב ברגל", 5,
@@ -176,11 +186,14 @@ public class SignalController : MonoBehaviour
                 throw new ArgumentException("Unknown SignalType: " + type.ToString(), "type");
         }
 
-        signal.name = type.ToString() + " (" + sigObj.Origin.name + " -> " + sigObj.Target.name + ")";
+        signal.name = type.ToString() + " (" + sigObj.Origin.name + " -> " + sigObj.Target.name + ")"; //set a name, for debugging
         signal.transform.position = sigObj.Origin.transform.position;
         return signal;
     }
 
+    /// <summary>
+    /// Called when a signal reached a body/brain part
+    /// </summary>
     internal void SignalReached(SignalMovement signal)
     {
         GameObject partReached = signal.SigClass == SignalMovement.SignalClass.Sensory ? inputManager.selectedBrainPart : inputManager.selectedBodyPart;
@@ -191,6 +204,9 @@ public class SignalController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Blinks the health text for a few seconds. Should be used with StartCoroutine
+    /// </summary>
     public IEnumerator BlinkHealth()
     {
         for (int blinks = 5; blinks > 0; blinks--)
@@ -201,6 +217,9 @@ public class SignalController : MonoBehaviour
         healthText.enabled = true;
     }
 
+    /// <summary>
+    /// Gets a body part from its name
+    /// </summary>
     public GameObject GetBodyPart(string name)
     {
         try
@@ -214,6 +233,9 @@ public class SignalController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets a brain part from its name
+    /// </summary>
     public GameObject GetBrainPart(string name)
     {
         try
