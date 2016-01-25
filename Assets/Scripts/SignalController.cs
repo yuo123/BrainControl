@@ -31,6 +31,7 @@ public class SignalController : MonoBehaviour
     public float signalInterval = 5f;
     //the time left for the next signal
     private float intervalTime;
+    public float signalSpeed = 1f;
 
     public int Health
     {
@@ -105,6 +106,7 @@ public class SignalController : MonoBehaviour
         signal.transform.SetParent(signalsCont.transform);//put the signals in a container, for a cleaner hierarchy
         sigObj.signalController = this;
         sigObj.SigType = type;
+        sigObj.speed = this.signalSpeed;
         Button infoButton = signal.transform.Find("Canvas/InfoButton").GetComponent<Button>();
         infoButton.onClick.AddListener(() => inputManager.SignalClick(signal));//set the click event
 
@@ -196,8 +198,7 @@ public class SignalController : MonoBehaviour
     /// </summary>
     internal void SignalReached(SignalMovement signal)
     {
-        GameObject partReached = signal.SigClass == SignalMovement.SignalClass.Sensory ? inputManager.selectedBrainPart : inputManager.selectedBodyPart;
-        if (partReached != signal.Target)
+        if (signal.destPart != signal.Target)
         {
             Health -= signal.Importance;
             StartCoroutine(BlinkHealth());
