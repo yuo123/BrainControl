@@ -23,6 +23,7 @@ public class SignalController : MonoBehaviour
 
     public Text healthText;
     public Canvas lostCanvas;
+    public GameObject signalInfoPanel;
 
     #endregion
 
@@ -32,6 +33,22 @@ public class SignalController : MonoBehaviour
     //the time left for the next signal
     private float intervalTime;
     public float signalSpeed = 1f;
+
+    private SignalMovement currentInfoSignal;
+
+    public SignalMovement CurrentInfoSignal
+    {
+        get { return currentInfoSignal; }
+        set
+        {
+            SignalMovement prev = currentInfoSignal;
+            currentInfoSignal = value;
+            if (prev != null)
+                prev.UpdateLine();
+            currentInfoSignal.UpdateLine();
+        }
+    }
+
 
     public int Health
     {
@@ -51,6 +68,8 @@ public class SignalController : MonoBehaviour
         }
     }
 
+    public Vector3 LineEndPoint { get; private set; }
+
     private void ShowLostPopup()
     {
         Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Menu"); //show the "Menu" layer. the unusual symbols are bitwise operators, because cullingMask is a flags field.
@@ -68,6 +87,21 @@ public class SignalController : MonoBehaviour
         }
 
         intervalTime = signalInterval;
+
+        //calculate LineEndPoint
+        Rect rect = ((RectTransform)signalInfoPanel.transform).rect;
+        LineEndPoint = signalInfoPanel.transform.TransformPoint(new Vector3(rect.x + 5f, rect.y + (rect.height / 8 * 7)));
+        LineEndPoint = new Vector3(LineEndPoint.x, LineEndPoint.y);
+    }
+
+    public Vector3 ScaleV3(params Vector3[] pts)
+    {
+        Vector3 result = Vector3.one;
+        for (int i = 0; i < pts.Length; i++)
+        {
+            result = Vector3.Scale(result, pts[i]);
+        }
+        return result;
     }
 
     // Update is called once per frame
