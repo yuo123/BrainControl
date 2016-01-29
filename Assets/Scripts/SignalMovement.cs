@@ -5,7 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public enum SignalType { LegPain, HandPain, ScaryObjectSight, FamiliarObjectSight, HotObject, ColdObject, SweetTaste, SourTaste, SpokenTo, Falling, Running, HotBody, ColdBody, HighBloodPressure, LowBloodPressure, LowWater, HighWater, BlockedBreathing }
+public enum SignalType
+{
+    LegPain, HandPain, ScaryObjectSight, FamiliarObjectSight, HotObject, ColdObject, SweetTaste, SourTaste,
+    SpokenTo, Falling, Running, HotBody, ColdBody, HighBloodPressure, LowBloodPressure, LowWater, HighWater, BlockedBreathing,
+    
+    Breath, ReduceHeartRate, IncreaseHeartRate, MoveHand, MoveLeg, Run, Speak, Shiver, Vasoconstriction, Cough
+}
 
 public class SignalMovement : MonoBehaviour
 {
