@@ -218,6 +218,42 @@ public class SignalController : MonoBehaviour
                 sigObj.FillSignalInfo(SignalMovement.SignalClass.Sensory, "Trachea", "Stem", "חנק", 40,
                     @"אינסטינקטים כגון השתעלות, שנועדה בין השאר להוציא עצמים זרים מקנה הנשימה, נשלטים ע""י גזע המוח");
                 break;
+            case SignalType.Breath:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Stem", "Lungs", "נשימה", 20,
+                    @"נשימה מתבצעת ע""י הריאות");
+                break;
+            case SignalType.ReduceHeartRate:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Stem", "Heart", "הורדת קצב הלב", 10,
+                    @"הלב מזרים דם לכל חלקי הגוף, וקצב פעימות מופחת מפחית את לחץ הדם");
+                break;
+            case SignalType.IncreaseHeartRate:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Stem", "Heart", "הגברת קצב הלב", 10,
+                    @"הלב מזרים דם לכל חלקי הגוף, וקצב פעימות מוגבר מעלה את לחץ הדם");
+                break;
+            case SignalType.MoveHand:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Cerebellum", "Arms", "הזזת הידיים", 25,
+                    @"הרחקה של הידיים יכולה למנוע פגיעה פיזית");
+                break;
+            case SignalType.MoveLeg:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Cerebellum", "Legs", "הזזת הרגליים", 25,
+                    @"הרחקה של הרגליים יכולה למנוע פגיעה פיזית");
+                break;
+            case SignalType.Run:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Cerebellum", "Legs", "ריצה", 15,
+                    @"הפעלת שרירי הרגליים לריצה יכולה להרחיק את הגוף כולו מסכנה");
+                break;
+            case SignalType.Speak:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Frontal", "Lungs", "דיבור", 10,
+                    @"דיבור, שתלוי, בין השאר, בהוצאת אוויר מהריאות, הוא צורת תקשורת ייחודית לבני אדם, ומשפרת מאוד את יכולת ההישרדות של האדם בקבוצה");
+                break;
+            case SignalType.Shiver:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Stem", "Arms", "רעד בידיים", 15,
+                    @"רעידות (למשל של הידיים) הן חלק ממנגנוני הגוף לחימום. הרעידות יוצרות חימום ע""י הפעלת השרירים שכחלק מפעולתם פולטים חום");
+                break;
+            case SignalType.Cough:
+                sigObj.FillSignalInfo(SignalMovement.SignalClass.Motor, "Stem", "Lungs", "שיעול", 35,
+                    @"שיעול כולל הוצאת אוויר חזקה ומהירה מהריאות, והוא יכול להוציא עצמים זרים הגורמים לחנק מקנה הנשימה");
+                break;
             default:
                 throw new ArgumentException("Unknown SignalType: " + type.ToString(), "type");
         }
