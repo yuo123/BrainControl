@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine.UI;
 using URandom = UnityEngine.Random;
 
@@ -25,10 +27,11 @@ public class SignalController : MonoBehaviour
     public Canvas lostCanvas;
     public GameObject signalInfoPanel;
 
+    public SignalType[] sensorySignalTypes;
+
     #endregion
 
-    private int health = 100;
-
+    private int signalWeightsTotal;
     public float signalInterval = 5f;
     //the time left for the next signal
     private float intervalTime;
@@ -49,7 +52,8 @@ public class SignalController : MonoBehaviour
         }
     }
 
-
+    public const int MAX_HEALTH = 100;
+    private int health = MAX_HEALTH;
     public int Health
     {
         get
@@ -79,6 +83,7 @@ public class SignalController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         path = new Vector3[transform.childCount];
 
         for (int i = 0; i < path.Length; i++)//put the positions of the "waypoint" GameObjects into an array
@@ -92,6 +97,8 @@ public class SignalController : MonoBehaviour
         Rect rect = ((RectTransform)signalInfoPanel.transform).rect;
         LineEndPoint = signalInfoPanel.transform.TransformPoint(new Vector3(rect.x + 5f, rect.y + (rect.height / 8 * 7)));
         LineEndPoint = new Vector3(LineEndPoint.x, LineEndPoint.y);
+
+        signalWeightsTotal = sensorySignalTypes.Sum(t => t.GetSelectionWeight());
     }
 
     public Vector3 ScaleV3(params Vector3[] pts)
@@ -110,14 +117,14 @@ public class SignalController : MonoBehaviour
         intervalTime -= Time.deltaTime;//see comment above intervalTime
         if (intervalTime <= 0)
         {
-            Array arr = Enum.GetValues(typeof(SignalType));
-            SignalType type = (SignalType)arr.GetValue(URandom.Range(0, arr.Length));//select a random SignalType
+            SignalType type = MyUtil.GetRandomSignalType(sensorySignalTypes, signalWeightsTotal);//select a random SignalType
             GameObject sig = InstantiateSignal(type);//see more info in method
             SignalMovement sigScript = sig.GetComponent<SignalMovement>();
             sigScript.StartMove();
             intervalTime = signalInterval;
         }
     }
+
 
     private GameObject GetRandomBodyPart()
     {

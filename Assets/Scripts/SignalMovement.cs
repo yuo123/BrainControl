@@ -7,10 +7,34 @@ using System.Collections;
 
 public enum SignalType
 {
-    LegPain, HandPain, ScaryObjectSight, FamiliarObjectSight, HotObject, ColdObject, SweetTaste, SourTaste,
-    SpokenTo, Falling, Running, HotBody, ColdBody, HighBloodPressure, LowBloodPressure, LowWater, HighWater, BlockedBreathing,
-    
-    Breath, ReduceHeartRate, IncreaseHeartRate, MoveHand, MoveLeg, Run, Speak, Shiver, Vasoconstriction, Cough
+    LegPain = 0 << 16 | 5,
+    HandPain = 1 << 16 | 5,
+    ScaryObjectSight = 2 << 16 | 20,
+    FamiliarObjectSight = 3 << 16 | 20,
+    HotObject = 4 << 16 | 30,
+    ColdObject = 5 << 16 | 25,
+    SweetTaste = 6 << 16 | 5,
+    SourTaste = 7 << 16 | 5,
+    SpokenTo = 8 << 16 | 10,
+    Falling = 9 << 16 | 30,
+    Running = 10 << 16 | 20,
+    HotBody = 11 << 16 | 20,
+    ColdBody = 12 << 16 | 20,
+    HighBloodPressure = 13 << 16 | 20,
+    LowBloodPressure = 14 << 16 | 20,
+    LowWater = 15 << 16 | 25,
+    HighWater = 16 << 16 | 25,
+    BlockedBreathing = 17 << 16 | 40,
+
+    Breath = 18 << 16 | 20,
+    ReduceHeartRate = 19 << 16 | 10,
+    IncreaseHeartRate = 20 << 16 | 10,
+    MoveHand = 21 << 16 | 25,
+    MoveLeg = 22 << 16 | 25,
+    Run = 23 << 16 | 15,
+    Speak = 24 << 16 | 10,
+    Shiver = 25 << 16 | 15,
+    Cough = 26 << 16 | 35
 }
 
 public class SignalMovement : MonoBehaviour
@@ -58,7 +82,6 @@ public class SignalMovement : MonoBehaviour
             myname = value;
         }
     }
-
 
     public float speed = 1f;
 
