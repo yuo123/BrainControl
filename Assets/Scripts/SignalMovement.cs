@@ -5,8 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+/*
+The values of this enum are integers built using bitwise operators.
+For the template a << 16 | b
+'a' will be put in the left 16 bits of the number, and 'b' will be put in the right 16 bits
+'a' is the enumeration number, used to make sure all values are unique, and 'b' is the importance
+
+To use these values, you do not need to use bit manipulations directly, but instead use the extension methods wich are located at MyUtils
+See their implementations if you're intrested
+*/
 public enum SignalType
 {
+    Invalid = -1,
     LegPain = 0 << 16 | 5,
     HandPain = 1 << 16 | 5,
     ScaryObjectSight = 2 << 16 | 20,

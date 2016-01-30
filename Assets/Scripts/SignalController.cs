@@ -28,14 +28,15 @@ public class SignalController : MonoBehaviour
     public GameObject signalInfoPanel;
 
     public SignalType[] sensorySignalTypes;
+    public SignalType[] eventLinks;
 
     #endregion
 
+
     private int signalWeightsTotal;
-    public float signalInterval = 5f;
-    //the time left for the next signal
-    private float intervalTime;
-    public float signalSpeed = 1f;
+    public float signalInterval;
+    private float intervalTime;//the time left for the next sensory signal
+    public float signalSpeed;
 
     private SignalMovement currentInfoSignal;
 
@@ -83,7 +84,6 @@ public class SignalController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         path = new Vector3[transform.childCount];
 
         for (int i = 0; i < path.Length; i++)//put the positions of the "waypoint" GameObjects into an array
@@ -142,6 +142,8 @@ public class SignalController : MonoBehaviour
     /// <param name="type">The type of the signal</param>
     public virtual GameObject InstantiateSignal(SignalType type)
     {
+        if (type == SignalType.Invalid)
+            return null;
         GameObject signal = Instantiate(signalPrefab);
         SignalMovement sigObj = signal.GetComponent<SignalMovement>();
         signal.transform.SetParent(signalsCont.transform);//put the signals in a container, for a cleaner hierarchy
@@ -279,6 +281,17 @@ public class SignalController : MonoBehaviour
         {
             Health -= signal.Importance;
             StartCoroutine(BlinkHealth());
+        }
+        else
+        {
+            SignalType type = eventLinks[signal.SigType.GetEnumIndex()];
+            GameObject sig = InstantiateSignal(type);
+            if (sig != null)
+            {
+                intervalTime = signalInterval;
+                SignalMovement sigScript = sig.GetComponent<SignalMovement>();
+                sigScript.StartMove();
+            }
         }
     }
 
