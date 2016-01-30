@@ -16,7 +16,8 @@ public class InputManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        SelectPart(signalController.GetBrainPart("Stem"));
+        SelectPart(signalController.GetBodyPart("Legs"));
     }
 
     // Update is called once per frame
@@ -27,25 +28,31 @@ public class InputManager : MonoBehaviour
             RaycastHit2D hitInfo = Physics2D.Raycast(new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero, 0f);
             if (hitInfo.collider != null)
             {
-                GameObject mark;
-                switch (hitInfo.collider.tag)
-                {
-                    case "BrainPart":
-                        mark = brainMarkGO;
-                        selectedBrainPart = hitInfo.collider.gameObject;
-                        break;
-                    case "BodyPart":
-                        mark = bodyMarkGO;
-                        selectedBodyPart = hitInfo.collider.gameObject;
-                        break;
-                    default:
-                        return;
-                }
-                mark.transform.position = hitInfo.collider.transform.position;
-                mark.transform.localScale = hitInfo.collider.transform.localScale;
-                mark.transform.rotation = hitInfo.collider.transform.rotation;
+                SelectPart(hitInfo.collider.gameObject);
+                return;
             }
         }
+    }
+
+    public void SelectPart(GameObject part)
+    {
+        GameObject mark;
+        switch (part.tag)
+        {
+            case "BrainPart":
+                mark = brainMarkGO;
+                selectedBrainPart = part.gameObject;
+                break;
+            case "BodyPart":
+                mark = bodyMarkGO;
+                selectedBodyPart = part.gameObject;
+                break;
+            default:
+                return;
+        }
+        mark.transform.position = part.transform.position;
+        mark.transform.localScale = part.transform.localScale;
+        mark.transform.rotation = part.transform.rotation;
     }
 
     public void SignalClick(GameObject signal)
