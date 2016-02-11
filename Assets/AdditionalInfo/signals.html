@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>פירוט דחפים עצביים</title>
+    <style>
+        body {
+            direction: rtl;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: gainsboro;
+            font-size: 18px;
+            /*50vh is half the height of the screen. this is so you can scroll the bottom-most table to a more convenient reading position then the very bottom of the screen*/
+            padding: 0px 50px 50vh;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: auto;
+        }
+
+        td, th {
+            border: 2px solid black;
+            padding: 2px 5px;
+        }
+
+        div.tbl {
+            display: inline-block;
+            width: auto;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        h2 {
+            text-align: right;
+        }
+
+        .title {
+            border-bottom: 1px solid #8d8d8d;
+        }
+
+        tr.highlighted {
+            background-color: rgba(0,0,0,0.2);
+        }
+    </style>
+
+    <script type="text/javascript">
+        var highlightedRow;
+
+        function onClickLink(lnk) {
+            var row = document.getElementById(lnk.substring(lnk.lastIndexOf('#') + 1));
+            highlightedRow = row;
+            highlightRow(row);
+            document.addEventListener("mousedown", unhighlightRow);
+        }
+
+        function highlightRow(row) {
+            row.classList.add("highlighted");
+        }
+
+        function unhighlightRow() {
+            document.removeEventListener("mousedown", unhighlightRow);
+            highlightedRow.classList.remove("highlighted");
+        }
+
+        function bodyLoad() {
+            var lnks = document.querySelectorAll("tbody > tr > td:nth-last-child(1) > a");
+            for (var i = 0; i < lnks.length; i++) {
+                lnks[i].setAttribute("onclick", "onClickLink(this.href)");
+                var dest = document.getElementById(lnks[i].href.substring(lnks[i].href.lastIndexOf('#') + 1));
+                lnks[i].innerText = dest.cells[0].innerText;
+            }
+        }
+    </script>
+</head>
+<body onload="bodyLoad()">
+    <h1 style="text-align:center">פירוט הדחפיים העצביים שבמשחק</h1>
+    <h1 class="title">דחפים באדם</h1>
+    <div style="text-align:center">
+        <div class="tbl">
+            <h2>דחפים מוטוריים</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>שם הדחף</th>
+                        <th>מידע</th>
+                        <th>מקור</th>
+                        <th>יעד</th>
+                        <th>תוצאה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="LegPain">
+                        <td>כאב ברגל</td>
+                        <td>תחושה וכאב מעובדים באונה הקודקודית</td>
+                        <td>רגליים</td>
+                        <td>האונה הקודקודית</td>
+                        <td><a href="#MoveLeg"></a></td>
+                    </tr>
+                    <tr id="HandPain">
+                        <td>כאב ביד</td>
+                        <td>תחושה וכאב מעובדים באונה הקודקודית</td>
+                        <td>ידיים</td>
+                        <td>האונה הקודקודית</td>
+                        <td><a href="#MoveHand"></a></td>
+                    </tr>
+                    <tr id="ScaryObjectSight">
+                        <td>עצם מפחיד</td>
+                        <td>נתונים חזותיים מהעיניים מעובדים באונה העורפית</td>
+                        <td>עיניים</td>
+                        <td>האונה העורפית</td>
+                        <td><a href="#Run"></a></td>
+                    </tr>
+                    <tr id="FamiliarObjectSight">
+                        <td>עצם מוכר</td>
+                        <td>נתונים חזותיים מהעיניים מעובדים באונה העורפית</td>
+                        <td>עיניים</td>
+                        <td>האונה העורפית</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="HotObject">
+                        <td>מגע חם מאוד</td>
+                        <td>על תגובה לטמפרטורות קיצוניות אחראית האונה הקודקודית</td>
+                        <td>ידיים</td>
+                        <td>האונה הקודקודית</td>
+                        <td><a href="#MoveHand"></a></td>
+                    </tr>
+                    <tr id="ColdObject">
+                        <td>מגע קר מאוד</td>
+                        <td>על תגובה לטמפרטורות קיצוניות אחראית האונה הקודקודית</td>
+                        <td>ידיים</td>
+                        <td>האונה הקודקודית</td>
+                        <td><a href="#MoveHand"></a></td>
+                    </tr>
+                    <tr id="SweetTaste">
+                        <td>טעם מתוק</td>
+                        <td>טעם מעובד באונה הקודקודית</td>
+                        <td>לשון</td>
+                        <td>האונה הקודקודית</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="SourTaste">
+                        <td>טעם חמוץ</td>
+                        <td>טעם מעובד באונה הקודקודית</td>
+                        <td>לשון</td>
+                        <td>האונה הקודקודית</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="SpokenTo">
+                        <td>שיחה</td>
+                        <td>עיבוד ותגובה לדיבור מעובדים באונה המצחית</td>
+                        <td>אוזניים</td>
+                        <td>האונה המצחית</td>
+                        <td><a href="#Speak"></a></td>
+                    </tr>
+                    <tr id="Falling">
+                        <td>נפילה</td>
+                        <td>שיווי משקל ושליטה מוטורית על השרירים הם תפקידיו של המוח הקטן</td>
+                        <td>אוזניים</td>
+                        <td>המוח הקטן</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="Running">
+                        <td>ריצה</td>
+                        <td>שיווי משקל ושליטה מוטורית על השרירים הם תפקידיו של המוח הקטן</td>
+                        <td>רגליים</td>
+                        <td>המוח הקטן</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="HotBody">
+                        <td>חום גוף גבוה</td>
+                        <td>בקרה על טמפרטורת הגוף היא אחריותו של ההיפותלמוס</td>
+                        <td>כלי דם</td>
+                        <td>היפותלמוס</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="ColdBody">
+                        <td>חום גוף נמוך</td>
+                        <td>בקרה על טמפרטורת הגוף היא אחריותו של ההיפותלמוס</td>
+                        <td>כלי דם</td>
+                        <td>היפותלמוס</td>
+                        <td><a href="#Shiver"></a></td>
+                    </tr>
+                    <tr id="HighBloodPressure">
+                        <td>לחץ דם גבוה</td>
+                        <td>שמירה על לחץ דם יציב נעשית ע"י גזע המוח</td>
+                        <td>כלי דם</td>
+                        <td>גזע המוח</td>
+                        <td><a href="#ReduceHeartRate"></a></td>
+                    </tr>
+                    <tr id="LowBloodPressure">
+                        <td>לחץ דם נמוך</td>
+                        <td>שמירה על לחץ דם יציב נעשית ע"י גזע המוח</td>
+                        <td>כלי דם</td>
+                        <td>גזע המוח</td>
+                        <td><a href="#IncreaseHeartRate"></a></td>
+                    </tr>
+                    <tr id="LowWater">
+                        <td>ריכוז מים נמוך</td>
+                        <td>שמירה על ריכוז נוזלים תקין בדם נעשית ע"י ההיפותלמוס</td>
+                        <td>כלי דם</td>
+                        <td>היפותלמוס</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="HighWater">
+                        <td>ריכוז מים גבוה</td>
+                        <td>שמירה על ריכוז נוזלים תקין בדם נעשית ע"י ההיפותלמוס</td>
+                        <td>כלי דם</td>
+                        <td>היפותלמוס</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="BlockedBreathing">
+                        <td>חנק</td>
+                        <td>אינסטינקטים כגון השתעלות, שנועדה בין השאר להוציא עצמים זרים מקנה הנשימה, נשלטים ע"י גזע המוח</td>
+                        <td>קנה הנשימה</td>
+                        <td>גזע המוח</td>
+                        <td><a href="#Cough"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div class="tbl">
+            <h2>דחפים סנסוריים</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>שם הדחף</th>
+                        <th>מידע</th>
+                        <th>מקור</th>
+                        <th>יעד</th>
+                        <th>תוצאה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="Breath">
+                        <td>נשימה</td>
+                        <td>נשימה מתבצעת ע"י הריאות</td>
+                        <td>גזע המוח</td>
+                        <td>ריאות</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="ReduceHeartRate">
+                        <td>הורדת קצב הלב</td>
+                        <td>הלב מזרים דם לכל חלקי הגוף, וקצב פעימות מופחת מפחית את לחץ הדם</td>
+                        <td>גזע המוח</td>
+                        <td>לב</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="IncreaseHeartRate">
+                        <td>הגברת קצב הלב</td>
+                        <td>הלב מזרים דם לכל חלקי הגוף, וקצב פעימות מוגבר מעלה את לחץ הדם</td>
+                        <td>גזע המוח</td>
+                        <td>לב</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="MoveHand">
+                        <td>הזזת הידיים</td>
+                        <td>הרחקה של הידיים יכולה למנוע פגיעה פיזית</td>
+                        <td>המוח הקטן</td>
+                        <td>ידיים</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="MoveLeg">
+                        <td>הזזת הרגליים</td>
+                        <td>הרחקה של הרגליים יכולה למנוע פגיעה פיזית</td>
+                        <td>המוח הקטן</td>
+                        <td>רגליים</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="Run">
+                        <td>ריצה</td>
+                        <td>הפעלת שרירי הרגליים לריצה יכולה להרחיק את הגוף כולו מסכנה</td>
+                        <td>המוח הקטן</td>
+                        <td>רגליים</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="Speak">
+                        <td>דיבור</td>
+                        <td>דיבור, שתלוי, בין השאר, בהוצאת אוויר מהריאות, הוא צורת תקשורת ייחודית לבני אדם, ומשפרת מאוד את יכולת ההישרדות של האדם בקבוצה</td>
+                        <td>האונה המצחית</td>
+                        <td>ריאות</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="Shiver">
+                        <td>רעד בידיים</td>
+                        <td>רעידות (למשל של הידיים) הן חלק ממנגנוני הגוף לחימום. הרעידות יוצרות חימום ע"י הפעלת השרירים שכחלק מפעולתם פולטים חום</td>
+                        <td>גזע המוח</td>
+                        <td>ידיים</td>
+                        <td>אין</td>
+                    </tr>
+                    <tr id="Cough">
+                        <td>שיעול</td>
+                        <td>שיעול כולל הוצאת אוויר חזקה ומהירה מהריאות, והוא יכול להוציא עצמים זרים הגורמים לחנק מקנה הנשימה</td>
+                        <td>גזע המוח</td>
+                        <td>ריאות</td>
+                        <td>אין</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
