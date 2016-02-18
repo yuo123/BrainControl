@@ -85,6 +85,33 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &624228482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 140830, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 624228483}
+  m_Layer: 0
+  m_Name: Waypoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &624228483
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 430788, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 624228482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.94, y: -2.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1281499818}
+  m_RootOrder: 4
 --- !u!1001 &873824713
 Prefab:
   m_ObjectHideFlags: 0
@@ -132,6 +159,134 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 21224946, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 121ccafdea7a700449b05bf1c0c0e2a1,
+        type: 3}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.22871216
+      objectReference: {fileID: 0}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.22871196
+      objectReference: {fileID: 0}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.11435598
+      objectReference: {fileID: 0}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.3355541
+      objectReference: {fileID: 0}
+    - target: {fileID: 468592, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.94202095
+      objectReference: {fileID: 0}
+    - target: {fileID: 437102, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 437102, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 21233240, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 038c904746418b84e8aaf820938ed242,
+        type: 3}
+    - target: {fileID: 426930, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 426930, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 480026, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 480026, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 430788, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 430788, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1281499818 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 410792, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 873824713}
+--- !u!1 &1436547587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 140830, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1436547588}
+  m_Layer: 0
+  m_Name: Waypoint (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1436547588
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 430788, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436547587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4, y: -2.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1281499818}
+  m_RootOrder: 3
+--- !u!1 &2021824008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 140830, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2021824009}
+  m_Layer: 0
+  m_Name: Waypoint (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021824009
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 430788, guid: e69a61b23165975479fe5ab9bab332a3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2021824008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.27, y: -1.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1281499818}
+  m_RootOrder: 5

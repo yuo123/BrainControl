@@ -467,7 +467,7 @@ GameObject:
   - 4: {fileID: 468592}
   - 212: {fileID: 21224946}
   m_Layer: 0
-  m_Name: braintemp
+  m_Name: BrainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +694,7 @@ GameObject:
   - 4: {fileID: 437102}
   - 212: {fileID: 21233240}
   m_Layer: 0
-  m_Name: BodyParts
+  m_Name: BodySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2493,7 +2493,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: BodySprite
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143156}
