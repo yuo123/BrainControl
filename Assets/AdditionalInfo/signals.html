@@ -76,8 +76,8 @@
             for (var i = 0; i < lnks.length; i++) {
                 lnks[i].setAttribute("onclick", "onClickLink(this.href)");
                 var dest = document.getElementById(lnks[i].href.substring(lnks[i].href.lastIndexOf('#') + 1));
-                lnks[i].innerText = dest.cells[0].innerText;
-            }
+                lnks[i].innerHTML = dest.cells[0].innerHTML;
+            } 
         }
 
         window.onhashchange = onInternalLink;
